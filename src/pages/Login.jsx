@@ -107,16 +107,17 @@ function Login() {
     try {
       setLoading(true);
       const microsoftAuthWindow = window.open(
-        "http://localhost:3000/auth/microsoft",
+        "https://app-backend-utn-2023.onrender.com/auth/microsoft",
         "_blank",
         "width=600,height=600"
       );
       window.addEventListener("message", (Event) => {
-        if (Event.origin === "http://localhost:3000") {
+        if (Event.origin === "https://app-backend-utn-2023.onrender.com") {
           if (Event.data) {
             sessionStorage.setItem("user", JSON.stringify(Event.data));
             microsoftAuthWindow.close();
-            window.location.href = "http://localhost:5173/users";
+            window.location.href =
+              "https://app-9e7db781-2c01-40b8-8eef-54007e8db3aa.cleverapps.io/users";
           } else {
             console.log("Error de token");
             microsoftAuthWindow.close();
