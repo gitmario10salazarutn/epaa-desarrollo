@@ -106,10 +106,22 @@ function Login() {
   const handleMicrosoftLogin = async () => {
     try {
       setLoading(true);
+      // Obtener dimensiones de la pantalla
+      const screenWidth = window.screen.width;
+      const screenHeight = window.screen.height;
+
+      // Definir el tamaño de la ventana emergente
+      const windowWidth = 600;
+      const windowHeight = 600;
+
+      // Calcular las posiciones para centrar la ventana emergente
+      const left = (screenWidth - windowWidth) / 2;
+      const top = (screenHeight - windowHeight) / 2;
+
       const microsoftAuthWindow = window.open(
         "https://app-backend-utn-2023.onrender.com/auth/microsoft",
         "_blank",
-        "width=600,height=600"
+        `width=${windowWidth},height=${windowHeight},top=${top},left=${left}`
       );
       window.addEventListener("message", (Event) => {
         if (Event.origin === "https://app-backend-utn-2023.onrender.com") {
